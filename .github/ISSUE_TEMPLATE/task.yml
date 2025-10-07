@@ -1,0 +1,15 @@
+name: Task
+description: Atomic unit of work for the tracker-only repo
+title: "[TASK] <summary>"
+labels: ["task"]
+body:
+  - type: textarea
+    id: goal
+    attributes: { label: Goal, description: What outcome are we shipping? }
+    validations: { required: true }
+  - type: textarea
+    id: steps
+    attributes: { label: Steps, description: Checklist of steps }
+  - type: textarea
+    id: artifacts
+    attributes: { label: Artifacts, description: Links/screenshots }
