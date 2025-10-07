@@ -24,3 +24,15 @@
 - **Outcome:** <what changes now>
 - **Owner:** @cg216
 - **Links:** <PR/issue/commit/MD>
+
+## 2025-10-07 — Matrix v1 locked
+- **Decision:** Use v1 baseline
+- **Context:** Unblock DSL work
+- **Outcome:** Start gen of ev_tco_v1 + quiz v1
+- **Links:** /matrix/content_generation_matrix.csv
+
+## 2025-10-07 — MDX components path fixed
+- **Decision:** Moved mdx-components.tsx to apps/site/ root per Next docs; removed 'use client'
+- **Context:** MDX runs without server/client context conflicts; page renders
+- **Outcome:** Proceeding to QC gates + DB interlinker + DSL
+- **Links:** Dev: <your Codespaces URL>/articles/nub-theory-explained
