@@ -48,3 +48,9 @@
 - **Context:** MDX can drop <QuizByKey> / <CalculatorByKey>; CI blocks merges if QC fails
 - **Outcome:** Next: front-matter sync + more pack specs; Remotion stub
 - **Links:** packs under apps/site/src/packs; .github/workflows/qc.yml
+
+## 2025-10-07 — Platform repo pushed
+- **Decision:** Initialized badass-platform, added QC workflow, packs, admin seeder
+- **Context:** CI will run QC; tenant pack + DB interlinker live
+- **Outcome:** Next: Remotion video stub + social autopost webhooks
+- **Links:** Repo: https://github.com/cg216/badass-platform
