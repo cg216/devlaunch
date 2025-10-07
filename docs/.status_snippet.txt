@@ -1,0 +1,8 @@
+[STATUS]
+Sprint: 0
+Tenant: baby-gender
+Done: Monorepo skeleton, Design tokens wired, Core MDX blocks + schema generator
+Doing: QC scaffold (InfoGain/Evidence/Parity/Links)
+Next: DB+Interlinker v1,Calculator DSL,Quiz DSL
+Blockers: none
+Link: https://github.com/cg216/devlaunch/blob/main/docs/MASTER_TRACKER.md#status

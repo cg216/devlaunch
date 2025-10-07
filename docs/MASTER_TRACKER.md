@@ -20,12 +20,18 @@
 - [ ] Variance matrix pass
 <!--STATUS_END-->
 
+<!--STATUS_END-->
 ## Blockers
 (none)
 
 ## Next 3
 <!--NEXT3_START-->
+<<<<<<< HEAD
 1) Core MDX blocks + schema generator  
 2) QC scaffold ON (4 hard gates)  
+=======
+1) Core MDX blocks + schema generator
+2) QC scaffold ON (4 hard gates)
+>>>>>>> d8be285 (docs: add status markers & sprint-0 status)
 3) DB tables + interlinker v1
 <!--NEXT3_END-->
