@@ -4,6 +4,7 @@
 **Tenant Focus:** baby-gender (slug: baby-gender)
 
 ## Status
+<!--STATUS_START-->
 - [x] Monorepo skeleton
 - [ ] Design tokens wired
 - [ ] Core MDX blocks + schema generator
@@ -17,11 +18,14 @@
 - [ ] Remotion/OG/IndexNow
 - [ ] v0 Tenant Wizard
 - [ ] Variance matrix pass
+<!--STATUS_END-->
 
 ## Blockers
 (none)
 
 ## Next 3
-1) Core MDX blocks + schema generator
-2) QC scaffold ON (4 hard gates)
+<!--NEXT3_START-->
+1) Core MDX blocks + schema generator  
+2) QC scaffold ON (4 hard gates)  
 3) DB tables + interlinker v1
+<!--NEXT3_END-->
