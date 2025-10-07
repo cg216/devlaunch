@@ -42,3 +42,9 @@
 - **Context:** Site now DB-first with JSON fallback
 - **Outcome:** Next: Quiz DSL scaffold + Admin seed page
 - **Links:** Table Editor: tenants/pages; Seed script: packages/db/seed.cjs
+
+## 2025-10-07 — Tenant spec pack + CI blockers
+- **Decision:** Added per-tenant packs (quiz/calc) with by-key renderers; added QC-in-CI workflow
+- **Context:** MDX can drop <QuizByKey> / <CalculatorByKey>; CI blocks merges if QC fails
+- **Outcome:** Next: front-matter sync + more pack specs; Remotion stub
+- **Links:** packs under apps/site/src/packs; .github/workflows/qc.yml
