@@ -36,3 +36,9 @@
 - **Context:** MDX runs without server/client context conflicts; page renders
 - **Outcome:** Proceeding to QC gates + DB interlinker + DSL
 - **Links:** Dev: <your Codespaces URL>/articles/nub-theory-explained
+
+## 2025-10-07 — Schema applied + DB seeded
+- **Decision:** Ran schema.sql in Studio; seeded tenant+pages from JSON pack
+- **Context:** Site now DB-first with JSON fallback
+- **Outcome:** Next: Quiz DSL scaffold + Admin seed page
+- **Links:** Table Editor: tenants/pages; Seed script: packages/db/seed.cjs
