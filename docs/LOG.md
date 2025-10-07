@@ -54,3 +54,9 @@
 - **Context:** CI will run QC; tenant pack + DB interlinker live
 - **Outcome:** Next: Remotion video stub + social autopost webhooks
 - **Links:** Repo: https://github.com/cg216/badass-platform
+
+## 2025-10-07 — Video pipeline stub online
+- **Decision:** Added queue+status API, server-side VideoEmbed, worker cron with placeholder
+- **Context:** Article flips to video when job completes; JSON-LD VideoObject present
+- **Outcome:** Next: swap worker stub for Remotion renderer + Storage upload
+- **Links:** video-worker.cjs, VideoEmbed.tsx, /api/video/*
