@@ -9,3 +9,4 @@ Thumbs.db
 # (Optional: only if you add local scripts)
 node_modules/
 dist/
+badass-platform/

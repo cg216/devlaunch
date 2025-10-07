@@ -1,30 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
-TRACKER="docs/MASTER_TRACKER.md"
-LOGFILE="docs/LOG.md"
-
-usage() {
-  cat <<'HLP'
+TRACKER="docs/MASTER_TRACKER.md"; LOGFILE="docs/LOG.md"
+usage(){ cat <<'HLP'
 devlaunch.sh — tracker helper
-
 Commands:
   status   --sprint N --tenant SLUG --done "A, B" --doing "C, D" --next "E;F;G" --blockers "none" --link URL
-  check    "Exact checklist line text"   # toggles - [ ] -> - [x] in Status block
-  next3    "item1;item2;item3"          # replaces Next 3 block
-  log      "Short title" "Decision" "Context" "Outcome" "Links"
-  show     # prints current Status+Next3 to stdout
+  check    "Exact checklist line"    # toggles - [ ] ↔ - [x] in Status block
+  next3    "item1;item2;item3"       # replaces Next 3 block
+  log      "Title" "Decision" "Context" "Outcome" "Links"
+  show
 HLP
 }
-
-require_handles() {
+require_handles(){
   grep -q "<!--STATUS_START-->" "$TRACKER" || { echo "Add STATUS_START/END markers to $TRACKER"; exit 1; }
   grep -q "<!--NEXT3_START-->" "$TRACKER"   || { echo "Add NEXT3_START/END markers to $TRACKER"; exit 1; }
 }
-
 cmd="${1:-}"; shift || true
-
-case "${cmd}" in
+case "$cmd" in
   status)
     require_handles
     SPRINT=""; TENANT=""; DONE=""; DOING=""; NEXT=""; BLOCKERS=""; LINK=""
@@ -52,11 +44,9 @@ Link: ${LINK}
 EOF
     echo "Wrote /tmp/status_snippet.txt"
     ;;
-
   check)
     require_handles
-    ITEM="${1:-}"
-    [[ -z "$ITEM" ]] && { echo "Usage: $0 check \"Exact checklist line\""; exit 1; }
+    ITEM="${1:-}"; [[ -z "$ITEM" ]] && { echo "Usage: $0 check \"Exact checklist line\""; exit 1; }
     awk -v item="$ITEM" '
       /<!--STATUS_START-->/ {inblock=1}
       inblock && $0 ~ "- \\[ \\] "item { sub("- \\[ \\] "item, "- [x] "item) }
@@ -65,7 +55,6 @@ EOF
       /<!--STATUS_END-->/ {inblock=0}
     ' "$TRACKER" > "$TRACKER.tmp" && mv "$TRACKER.tmp" "$TRACKER"
     ;;
-
   next3)
     require_handles
     IFS=';' read -r I1 I2 I3 <<< "${1:-;;}"
@@ -75,10 +64,8 @@ EOF
       skip==0 {print}
     ' "$TRACKER" > "$TRACKER.tmp" && mv "$TRACKER.tmp" "$TRACKER"
     ;;
-
   log)
     TITLE="${1:-}"; DEC="${2:-}"; CTX="${3:-}"; OUT="${4:-}"; LINKS="${5:-}"
-    [[ -z "$TITLE" || -z "$DEC" ]] && { echo "Usage: $0 log \"Title\" \"Decision\" \"Context\" \"Outcome\" [\"Links\"]"; exit 1; }
     DATE=$(date +%F)
     {
       echo ""
@@ -90,22 +77,9 @@ EOF
     } >> "$LOGFILE"
     echo "Appended to $LOGFILE"
     ;;
-
   show)
     require_handles
-    awk '
-      /<!--STATUS_START-->/, /<!--STATUS_END-->/{print}
-      /<!--NEXT3_START-->/, /<!--NEXT3_END-->/{print}
-    ' "$TRACKER"
+    awk '/<!--STATUS_START-->/, /<!--STATUS_END-->/{print} /<!--NEXT3_START-->/, /<!--NEXT3_END-->/{print}' "$TRACKER"
     ;;
-
-  ""|-h|--help|help)
-    usage
-    ;;
-
-  *)
-    echo "Unknown command: $cmd"
-    usage
-    exit 1
-    ;;
+  *) usage; [[ -z "$cmd" ]] && exit 0 || exit 1;;
 esac
